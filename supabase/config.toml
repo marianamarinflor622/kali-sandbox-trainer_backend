@@ -228,8 +228,8 @@ enable_signup = true
 # If enabled, a user will be required to confirm any email change on both the old, and new email
 # addresses. If disabled, only the new email is required to confirm.
 double_confirm_changes = true
-# Alineado con aula “real”: confirmación por correo activa. Aulas sin buzón: pon `false` aquí y en Dashboard.
-enable_confirmations = true
+# Aula con acceso inmediato tras registro (sin confirmación por correo).
+enable_confirmations = false
 # If enabled, users will need to reauthenticate or have logged in recently to change their password.
 secure_password_change = false
 # Controls the minimum amount of time that must pass before sending another signup confirmation or password reset email.
