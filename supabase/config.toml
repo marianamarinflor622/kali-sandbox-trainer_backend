@@ -160,12 +160,16 @@ enabled = true
 # Ejemplo si publicas el SPA en GitHub Pages (sustituye usuario/repo):
 #   site_url = "https://TU_USUARIO.github.io/kali-sandbox-trainer/"
 #   additional_redirect_urls = [ "https://TU_USUARIO.github.io/kali-sandbox-trainer/recuperar/continuar" ]
-site_url = "http://127.0.0.1:3000"
+#
+# Producción (Vercel): ajusta `site_url` si tu dominio de despliegue no coincide.
+site_url = "https://kali-sandbox-trainer.vercel.app"
 additional_redirect_urls = [
   "http://127.0.0.1:3000",
   "http://127.0.0.1:5173",
   "http://localhost:3000",
   "http://localhost:5173",
+  "https://kali-sandbox-trainer.vercel.app",
+  "https://kali-sandbox-trainer.vercel.app/recuperar/continuar",
 ]
 # How long tokens are valid for, in seconds. Defaults to 3600 (1 hour), maximum 604,800 (1 week).
 jwt_expiry = 3600
@@ -306,8 +310,8 @@ max_enrolled_factors = 10
 
 # Control MFA via App Authenticator (TOTP)
 [auth.mfa.totp]
-enroll_enabled = false
-verify_enabled = false
+enroll_enabled = true
+verify_enabled = true
 
 # Configure MFA via Phone Messaging
 [auth.mfa.phone]
