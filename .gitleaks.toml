@@ -1,0 +1,12 @@
+title = "kali-sandbox-trainer_backend"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Artefactos de build y dependencias"
+paths = [
+  '''web/\.next/''',
+  '''web/node_modules/''',
+  '''dist/''',
+]

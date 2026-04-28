@@ -1,0 +1,34 @@
+# Requiere secretos: SUPABASE_ACCESS_TOKEN, SUPABASE_PROJECT_REF, SUPABASE_DB_PASSWORD
+# (documentados en README.md). Sin ellos, desactiva este workflow y usa `supabase db push` en local.
+
+name: Supabase DB push
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: supabase-db-push-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: supabase/setup-cli@v1
+        with:
+          # Pin explícito (no `latest`). Actualiza tras probar en local: `supabase --version` / releases CLI.
+          version: 2.95.0
+
+      - name: Link project (non-interactive)
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: |
+          supabase link --project-ref "${{ secrets.SUPABASE_PROJECT_REF }}" --password "${{ secrets.SUPABASE_DB_PASSWORD }}"
+
+      - name: Push migrations
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: supabase db push

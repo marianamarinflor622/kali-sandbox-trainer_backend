@@ -1,0 +1,16 @@
+# Dependencias
+node_modules/
+scripts/node_modules/
+
+# Secretos y entorno local (CLI, tokens, contraseña de BD)
+.env
+.env.*
+
+# macOS
+.DS_Store
+
+# Supabase CLI (artefactos locales; supabase/ tiene su propio .gitignore)
+.branches
+
+# pre-commit / gitleaks
+.pre-commit/
